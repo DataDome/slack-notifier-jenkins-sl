@@ -15,9 +15,12 @@ String getAbsoluteUrl() {
   return currentBuild.absoluteUrl
 }
 
-
-String getProjectName() {
-  return env.BUILD_URL.split('job/')[1].split('/')[0]
+String getProjectName(boolean isGitHubProject = 'false' ) {
+  if (env.PROJECT_NAME){
+     return env.PROJECT_NAME
+  }else{
+     return env.BUILD_URL.split('job/')[1].split('/')[0]
+  }
 }
 
 
